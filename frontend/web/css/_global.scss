@@ -1,0 +1,63 @@
+* {
+box-sizing: border-box;
+    &::selection {
+	background: $zapleo_orange;
+    color: $white;
+	}
+	img::selection {
+	background: none;
+	}
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: "GothamPro", sans-serif;
+	font-size: calcFluidSize(10, 20, 320, 1920); /* Fluid font-size */
+	color: $black;
+	//@include radial_gradient;
+	//background-repeat: no-repeat;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+a, a:hover, a:focus {
+	outline: none;
+	text-decoration:none;
+	color: inherit;
+	@extend %pointer;
+}
+
+ul, ol {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+button, select {
+	border: none;
+	outline: none;
+	padding: 0;
+	@extend %pointer;
+}
+
+//SVG <text>
+text {
+font: 700 15px "Geometria", sans-serif;
+text-anchor: middle;
+}
+
+//Products on sale
+.sale {
+position: relative;
+	svg {
+	position: absolute;
+	}
+	text {
+	letter-spacing: -1px;
+	}
+}

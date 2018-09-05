@@ -1,0 +1,220 @@
+@import '_vars', '_tools', "_global", "_aside-global", "_tabs", "_grid", "_image_tab", "_design_tab", "_zoom+backgrounds";
+
+body {
+background: $mask_background;
+}
+
+%visible {
+display: block;
+}
+
+/* Case type choise */
+.case_type {
+//flex: 1 1 auto;
+height: 100%;
+overflow: auto;
+font-size: 0.9em;
+padding: 5px 0 0 5px;
+background: $sidebar_bg + #060607;
+	ul {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	@extend %flex-wrap;
+		li {
+		flex: 1 1 45%;
+		margin: 0 5px 5px 0;
+		padding-top: 1.86em;
+		background-color: $tile;
+		@extend %pointer;
+			&:hover {
+			background-color: transparent;
+			}
+			//Sale marker
+			svg {
+			top: 0; right: 0;
+			}
+		}
+	}
+	img {
+	max-height: 98px; //Case preview
+	}
+	p {
+	padding: 0 5px;
+	margin-top: 0;
+	}
+}
+
+.constructor {
+@extend %disp_none;
+//display: flex;
+flex-direction: column;
+//flex: 1 1 auto;
+height: 100%;
+font-size: 0.8em;
+color: $grey;
+padding-top: 0.32em;
+//background: $tile + #020100;
+background: linear-gradient(to bottom, $tile + #020100 3em, $sidebar_bg + #060607 3em);
+}
+
+/* ---- Switchiing blocks by tab clicking ---- */
+.grid, .image, .design {
+padding: 5px 0 0 5px;
+@extend %disp_none;
+	height: calc(100% - 2.9em);
+	overflow: auto;
+}
+
+#tab1:checked ~ .grid {
+@extend %visible;
+}
+
+#tab2:checked ~ .image,
+#tab3:checked ~ .design {
+display: flex;
+}
+
+/* Instagram profile */
+.my_pr.active {
+	~ .uploaded {
+	@extend %visible;
+	}
+}
+
+.other_pr.active {
+	~ .search-insta {
+		@extend %visible;
+	}
+}
+
+/* Manual variants */
+.by_link.active {
+	~ .search-link {
+		@extend %visible;
+	}
+}
+
+/* Design tabs */
+#tab4:checked ~ .bg_categories,
+#tab5:checked ~ .emoji_categories,
+#tab6:checked ~ .text {
+@extend %visible
+}
+
+/* Success window */
+.success {
+@extend %fullscreen_background_element;
+}
+
+.notice {
+	.congrats {
+	font-weight: 300;
+		@media (min-aspect-ratio:16/10) {margin: 0 0 1.5%;}
+	}
+	figure {
+	margin: 0;
+		p {
+		font-size: 1.1em;
+		font-weight: 300;
+		}
+	}
+	figcaption {
+		h1 {
+			@media (max-width:1400px) {font-size: 1.5em;}
+		}
+		&>* {
+			@media (min-aspect-ratio:16/10) {margin: 1.5% 0;}
+		}
+	}
+	.back, .next {
+	position: relative;
+	width: 47.4%;
+	}
+	.back_arr {
+		@extend %back_arr;
+	}
+	footer {
+	background: $sidebar_bg;
+	padding: 1em 0.8em 1.2em;
+		@media (min-aspect-ratio:16/10) {padding: 0.8em;}
+	}
+}
+
+.price {
+font-weight: 400;
+}
+
+/* Case result image */
+.custom_design {
+width: 173px;
+height: 343px;
+margin: 0 auto;
+@extend %custom_design;
+	@media (max-width:900px) {width: 24.4vmin; height: 48.4vmin;}
+	//3d case
+	&.case3d {
+	width: 210px;
+		@media (max-width:900px) {width: 23.39vmin;height: 38.2vmin;}
+	}
+}
+
+/* Shepherd Tour Styles */
+body.shepherd-active{
+    .no-clicks{
+        pointer-events: none!important;
+    }
+    .shepherd-element.shepherd-theme-arrows{
+        max-width: 40%;
+        z-index:2;
+        
+        .shepherd-content{
+            font-family: Geometria, sans-serif;
+            
+            header{
+                a.shepherd-cancel-link{
+                    opacity: 0.5;
+                    
+                    &:hover{
+                        opacity: 0.85;
+                    }
+                }
+            }
+            footer{
+                .shepherd-buttons{
+                    li{
+                        .shepherd-button{
+                            border: 1px solid #838385;
+                            color: #838385;
+                            display: inline-block;
+                            background-color: #fff;
+                            border-radius: 1.8em;
+                            text-transform: uppercase;
+                            border-radius: 1em;
+                            transition: all 0.1s ease-out;
+                            
+                            &:hover{
+                                color: #fff;
+                                border-color: $zapleo_orange;
+                                display: inline-block;
+                                background-color: $zapleo_orange;
+                                border-radius: 1.8em;
+                                text-transform: uppercase;
+                                border-radius: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+#dark-master{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0; 
+    z-index: 2;
+}

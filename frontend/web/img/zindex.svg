@@ -1,0 +1,5 @@
+<!--<svg xmlns="http://www.w3.org/2000/svg" id="стрелки" width="43.34" height="40.72" viewBox="0 0 43.34 40.719"><defs><style>.layout {fill:#fbfbfb;stroke:#333;stroke-linejoin:round;stroke-width:2px;fill-rule:evenodd;}</style></defs><path d="M21.67 15l20.66 12.36-20.66 12.37L1 27.36z" class="layout"/><path d="M21.67 8l20.66 12.36-20.66 12.37L1 20.36z" class="layout"/><path d="M21.67 1l20.66 12.36-20.66 12.37L1 13.36z" class="layout"/></svg>-->
+
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 60 60">
+	<path d="M53,20v-7h-7V6H0v34h7v7h7v7h46V20H53z M2,38V8h42v5H7v25H2z M9,45v-5V15h37h5v5H14v25H9z M58,52H16v-5V22h37h5V52z"/>
+</svg>

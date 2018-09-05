@@ -1,0 +1,29 @@
+.grid {
+flex: 1 1 auto;
+//background: $sidebar_bg + #060607;
+	ul{
+	display: flex;
+	justify-content: center;
+	@extend %flex-wrap;
+		li {
+		flex: 1 1 30%;
+		text-align: center;
+		margin: 0 5px 5px 0;
+		@extend %tile;
+		@extend %pointer;
+		}
+	}
+	/* SVG samples */
+	svg {
+	display: inline-block;
+	max-width: 62px;
+    height: 16vh;
+	max-height: 100px;
+	//margin: 3.4em auto;
+	margin: 4.2vh auto;
+	fill: $svg-grid;
+		path {
+		fill-rule: evenodd;
+		}
+	}
+}

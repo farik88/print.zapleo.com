@@ -1,0 +1,189 @@
+%input_element {
+font-weight: inherit;
+font-family: inherit;
+border: 1px solid $grey;
+border-radius: 2px;
+outline: none;
+background: $white;
+}
+
+.design {
+@extend %flex-wrap;
+@extend %width100;
+	>label {
+		&:first-of-type {
+		margin-left: -5px;
+		}
+		&[for^="tab"]::before {
+		background: $tile;
+		}
+	}
+}
+
+/* Background categories, Emoji categories */
+[class$="categories"] {
+@extend %disp_none;
+columns: auto 2;
+column-gap: 0;
+padding-top: 5px;
+text-transform: uppercase;
+text-align: center;
+height: calc(100% - 2.9em);
+overflow: auto;
+@extend %width100;
+	li {
+	background: $tile;
+	margin: 0 5px 5px 0;
+	line-height: 2.8em;
+	@extend %pointer;
+		&:hover {
+		background: $zapleo_orange;
+		color: $white;
+		}
+	}
+}
+
+/* Text */
+
+/* ---------- Font examples for case constructor ---------- */
+
+@font-face {
+	font-family: "DancingScript";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/constructor/DancingScript.ttf") format("truetype"),
+		url("../fonts/constructor/DancingScript.woff") format("woff");
+}
+@font-face {
+	font-family: "GloriaHallelujah";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/constructor/GloriaHallelujah.ttf") format("truetype"),
+		url("../fonts/constructor/GloriaHallelujah.woff") format("woff"),
+		url("../fonts/constructor/GloriaHallelujah.woff") format("woff");
+}
+@font-face {
+	font-family: "IndieFlower";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/constructor/IndieFlower.ttf") format("truetype"),
+		url("../fonts/constructor/IndieFlower.woff") format("woff"),
+		url("../fonts/constructor/IndieFlower.woff") format("woff");
+}
+@font-face {
+	font-family: "LobsterRegular";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/constructor/LobsterRegular.ttf") format("truetype"),
+		url("../fonts/constructor/LobsterRegular.woff") format("woff"),
+		url("../fonts/constructor/LobsterRegular.woff") format("woff");
+}
+@font-face {
+	font-family: "PacificoRegular";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/constructor/PacificoRegular.ttf") format("truetype"),
+		url("../fonts/constructor/PacificoRegular.woff") format("woff"),
+		url("../fonts/constructor/PacificoRegular.woff") format("woff");
+}
+@font-face {
+	font-family: "PoiretOne";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/constructor/PoiretOne.ttf") format("truetype"),
+		url("../fonts/constructor/PoiretOne.woff") format("woff"),
+		url("../fonts/constructor/PoiretOne.woff") format("woff");
+}
+@font-face {
+	font-family: "ShadowsIntoLight";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/constructor/ShadowsIntoLight.ttf") format("truetype"),
+		url("../fonts/constructor/ShadowsIntoLight.woff") format("woff");
+}
+@font-face {
+	font-family: "YanoneKaffeesatzRegular";
+	font-style: normal;
+	font-weight: normal;
+	src: url("../fonts/constructor/YanoneKaffeesatzRegular.ttf") format("truetype"),
+		url("../fonts/constructor/YanoneKaffeesatzRegular.woff") format("woff"),
+		url("../fonts/constructor/YanoneKaffeesatzRegular.woff") format("woff");
+}
+
+.text {
+padding: 0 1.9em 0 1em;
+height: calc(100% - 2.9em);
+@extend %width100;
+@extend %disp_none;
+	textarea {
+	padding: 0.5em 1em;
+	margin: 0;
+	resize: none;
+	@extend %width100;
+	@extend %input_element;
+	}
+	strong {
+	text-transform: uppercase;
+	}
+}
+
+.colors {
+background: $white;
+margin: 0.5em 0 2.2em;
+padding: 0.5em 0.5em 0;
+	li {
+	float: left;
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	margin: 0 0.5em 0.5em 0;
+	}
+	label {
+	display: inherit;
+	height: 100%;
+	@extend %width100;
+	}
+	[type="radio"]:checked {
+		&+label {
+		outline: 4px solid $black;
+		}
+	}
+}
+
+/* Font choise */
+.fonts {
+	li {
+	display: inline-block;
+	line-height: 30px;
+    text-align: center;
+	}
+	label {
+	display: inherit;
+	margin: 0 5px 5px 0;
+	width: 120px;
+	height: 30px;
+	background: $tile;
+	}
+	input {
+		&:checked + label {
+			background: $active_bg;
+		}
+	}
+}
+
+/* Font-size input */
+#fontsize {
+padding: 0.5em;
+height: 2rem;
+width: 94px;
+@extend %input_element;
+}
+
+/* Add text button */
+.addtext {
+padding: 0 3em;
+color: $white;
+height: 2rem;
+float: right;
+@include rounded_button($bg_color: $zapleo_orange, $boxshadow: false);
+}

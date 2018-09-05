@@ -1,0 +1,15 @@
+.hide {
+    display:none !important;
+}
+
+body #lang-switcher-widget{
+    bottom: 50px;
+    left: 2.7em;
+    
+    @media (max-width:960px){
+        &{
+            bottom: 40px;
+            left: 2em;
+        }
+    }
+}

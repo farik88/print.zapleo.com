@@ -1,0 +1,189 @@
+%float-right {
+float: right;
+}
+
+body {
+//margin: 2.2em 0;
+margin: 4.7vh 0;
+@include radial_gradient;
+background-repeat: no-repeat;
+}
+
+h1, h2 {
+margin: 0;
+text-transform: uppercase;
+font-weight: 400;
+}
+
+h1 {
+padding: 0.82em 0 0.6em;
+}
+
+h2 {
+font-size: 1.1em;
+}
+
+input {
+font-family: inherit;
+border: none;
+outline: none;
+}
+
+%border-bottom {
+border-bottom: 1px solid $sidebar_bg + #060607;
+}
+
+.content {
+font-family: "Geometria", sans-serif;
+color: $gridline;
+margin: 0 auto;
+padding: 0 2.4em;
+width: 64.1%;
+min-height: 90.6vh;
+position: relative;
+//top: 2.2em;
+background: $white;
+@extend %flex-wrap;
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		bottom: -20px;
+		left: -10%;
+		width: 120%;
+		height: 40px;
+		background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+			@media (max-width: 768px) {content: none;}
+	}
+	@media (max-width:960px) {width: 80%;}
+	@media (max-width:660px) {text-align: center; padding: 0; height: auto;}
+	section {
+	border: 1px solid $sidebar_bg + #060607;
+	border-top-color: $zapleo_orange;
+	height: 80.7%;
+	overflow: auto;
+	}
+	.wrapper {
+	display: flex;
+	justify-content: space-between;
+	@extend %flex-wrap;
+	@extend %width100;
+		/* ---- Inner blocks ---- */
+		>div {
+		position: relative;
+		display: inline-block;
+		border: 1px solid $sidebar_bg + #060607;
+		border-top-color: $zapleo_orange;
+			@media (max-width:660px) {
+				width: 80%;
+				margin-bottom: 2em;
+				padding-bottom: 2em;
+			}
+		}
+		@media (max-width:660px) {
+		flex-direction: column;
+		align-items: center;
+		}
+	}
+}
+
+/* Two little blocks */
+%pair {
+width: 48.4%;
+padding-top: 1.6em;
+padding-left: 2.7%;
+padding-right: 2.7%;
+	button[role] {
+	position: absolute;
+	bottom: 1.4em;
+		@media (max-width:660px) {position: static; margin-top: 2em;}
+	}
+}
+
+/* Total block */
+.total {
+padding-top: 0.6em;
+padding-bottom: 0.6em;
+padding-left: 2.7%;
+padding-right: 2.7%;
+text-align: left;
+@extend %width100;
+	//Discount input
+	input {
+	@extend %width100;
+    max-width: 244px;
+	padding: 0 0.5em;
+	margin-right: 0.8em;
+	height: 28px;
+	background: $active_bg;
+	}
+	//Check discount code
+	button {
+	font-family: inherit;
+	background: none;
+	margin: 0.4em 0;
+	text-decoration: underline;
+	}
+	h2 {
+	display: inline-block;
+	}
+	strong {
+		float: right;
+	}
+	@media (max-width: 660px) {width: 90%;}
+}
+
+.discount {
+display: flex;
+justify-content: space-between;
+@extend %flex-wrap;
+max-width: 244px;
+font-size: 0.8em;
+font-family: 'GothamPro';
+	p {
+	margin-top: 0;
+	}
+	@media (max-width: 660px) {font-size: 1em;}
+}
+
+.rate {
+display: inline-block;
+}
+
+.currency {
+@extend %float-right;
+}
+
+.all {
+margin-top: 2em;
+max-width: 244px;
+}
+/* End total block */
+
+/* Validation error */
+.form-group {
+position: relative;
+}
+
+.valid_error {
+z-index: 1;
+pointer-events: none;
+position: absolute;
+@extend %width100;
+font-size: 0.8em;
+margin: -1px 0 0;
+border-top: 1px dashed transparent;
+color: red;
+transition: border .5s ease-in-out;
+	p {margin: 2px 0;}
+}
+
+[aria-invalid="true"] + .valid_error {
+	border-top-color: red;
+}
+
+/* Error notifications */
+.message {
+padding: 0 1em;
+	// &~ .buttons {padding: 0 1em;}
+}

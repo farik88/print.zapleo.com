@@ -1,0 +1,14 @@
+ul {
+list-style: none;
+}
+
+.box {
+	.days {
+	display: inline-flex;
+		li {
+			&+li {
+			margin-left: 0.2em;
+			}
+		}
+	}
+}

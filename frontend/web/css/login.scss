@@ -1,0 +1,121 @@
+@import '_vars', '_tools', '_fonts', '_global', '_whiteblock';
+
+.new, .registered {
+padding-bottom: 15vmin;
+}
+
+/* New */
+.new {
+@extend %pair;
+	li {
+	text-align: left;
+	color: $grey;
+	line-height: 1.7em;
+	// Marker for items
+		&::before {
+		content: "";
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		background: url(../img/marker.svg) no-repeat 0 0/contain;
+		margin: 0 0.6em -0.1em 0.3em;
+		}
+	}
+}
+
+/* Registered */
+.registered {
+@extend %pair;
+}
+
+/* Buttons */
+button[role] {
+font-family: inherit;
+font-size: 0.9em;
+padding: 0.9em;
+width: 14em;
+min-width: 180px;
+@extend %big_button_vs_hover;
+}
+
+/* Inputs */
+input {
+display: block;
+padding: 2.5em 0 0.68em;
+font-size: 0.75em;
+@extend %width100;
+@extend %border-bottom;
+}
+
+/* .reg {
+	@extend %big_button_vs_hover;
+	border: 1px solid $grey + #1a1a1a;
+	color: $grey + #1a1a1a;
+	@include rounded_button($bg_color: $white, $boxshadow: false);
+}
+
+.login {
+	@extend %big_button_vs_hover;
+	font-weight: bold;
+	color: $white;
+	@include rounded_button($bg_color: $zapleo_orange, $boxshadow: false);
+} */
+
+/* Create account */
+.create {
+padding-top: 1.6em;
+padding-bottom: 24.8vmin;
+padding-left: 2.7%;
+padding-right: 2.7%;
+@extend %width100;
+	form {
+	display: block;
+	width: 54%;
+	text-align: center;
+	margin: 0 auto;
+		@media (max-width:660px) {width: 100%;}
+	}
+	input {
+	font-size: 1em;
+	padding: 1.6em 0 0.2em;
+	}
+	button[role] {
+	margin-top: 2.7em;
+	}
+}
+
+/* Close button */
+.close {
+color: $gridline;
+font-size: 1em;
+font-family: inherit;
+background: none;
+position: absolute;
+top: 2.3%;
+right: 3.3%;
+	svg {margin-bottom: -1px;}
+	@media (max-width:660px) {font-size: 0;}
+}
+
+.buttons {
+//flex: 1 1 auto;
+//padding: 1.6em 2.7%;
+@extend %bottom_buttons;
+}
+
+//Back button
+.back {
+	text-align: center;
+	position: relative;
+	//max-width: 248px;
+	//height: 2.8em;
+	//line-height: 2.8em;
+	//min-width: 200px;
+    //width: 32%;
+	//margin: 1em 2.7%;
+	//@extend .reg;
+}
+
+.back_arr {
+	@extend %back_arr;
+}

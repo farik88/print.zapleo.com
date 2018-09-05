@@ -1,0 +1,24 @@
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: http://mycase.com
+            browser: 'chrome'
+        - Yii2:
+            part: init
+env:
+  phantom:
+    modules:
+      config:
+        WebDriver:
+          browser: 'phantomjs'
+    chrome:
+      modules:
+        config:
+          WebDriver:
+            browser: 'chrome'
+    firefox:
+      modules:
+            config:
+              WebDriver:
+                browser: 'firefox'

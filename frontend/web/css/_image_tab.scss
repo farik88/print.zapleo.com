@@ -1,0 +1,145 @@
+.image {
+@extend %width100;
+align-items: flex-start;
+flex-direction: column;
+//background: $sidebar_bg + #060607;
+	div {
+	width: inherit;
+	}
+}
+
+.buttons {
+display: inherit;
+flex: 0 0 auto;
+}
+
+/* input[type="file"] */
+#upload {
+@extend %disp_none;
+}
+
+.upload {
+flex: 1 1 45%;
+margin: 0 5px 5px 0;
+padding: 1.25em 0.2em 0.8em;
+font-size: calcFluidSize(13, 16, 320, 1920);
+text-align: center;
+@extend %tile;
+	img {
+	max-height: 2.4vmax;
+    min-height: 18px;
+	}
+	span {
+	display: block;
+		@media (max-width: 1280px) {width: 100px; margin: 0 auto;}
+	}
+	&.active {
+		img {filter: contrast(17);}
+	}
+}
+
+.any, .inst {
+	@media (max-width:1280px) {padding: 0.6em 0 0.4em;}
+}
+
+/* Block with uploaded images */
+.uploaded {
+@extend %width100;
+	li {
+	position: relative;
+	display: inline-block;
+	margin: 0 1% 0.2% 0;
+	width: 24%;
+		img {
+		@extend %width100;
+		height: 8.11em;
+		object-fit: cover;
+		}
+	}
+	button {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	width: 1.88em;
+	height: 1.88em;
+	background: url(../img/del.svg) no-repeat 0 0/cover transparent;
+	}
+}
+
+/* Manual and Instagram uploading */
+.manual, .instagram {
+//height: 100%;
+//@extend %width100;
+@extend %disp_none;
+}
+
+.profiles {
+display: flex;
+@extend %flex-wrap;
+	button, .instaLogin {
+	flex: 1 1 45%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px 5px 0;
+	padding: 0.54em 0;
+	font-size: calcFluidSize(13, 16, 320, 1920);
+	@extend %tile;
+	  img {
+		margin-right: 1.5em;
+	  }
+	}
+	.uploaded {
+	@extend %disp_none;
+	}
+	//Choose file on PC
+	label {
+	    padding: 0.54em 0;
+	}
+}
+
+.instaLogin {
+@extend %pointer;
+}
+
+/* Instagram avatar */
+.my_pr {
+	img {
+	border-radius: 50%;
+	width: 38px;
+	height: 38px;
+	}
+}
+
+/* Search form */
+.search-insta, .search-link {
+@extend %disp_none;
+margin: 0 5px 5px 0;
+padding: 0 0.9em;
+@extend %width100;
+border: 1px solid $grey + #1a1a1a;
+background: $tile - #010101;
+	input {
+	display: inline-block;
+	padding: 0;
+    border: none;
+	width: 85%;
+	height: 2.4em;
+	font-size: calcFluidSize(13, 16, 320, 1920);
+	background: none;
+    outline: none;
+	-webkit-appearance: none;
+		// &::-webkit-search-cancel-button {display: none;} This line removes cancel button
+		&:focus {
+			&::placeholder {color: transparent;} //Removing placeholder on focus 
+			& + button {filter: drop-shadow(0 2px 1px $grey + #1a1a1a);} //Highlighting submit button
+		}
+	}
+	button {
+	width: 18px;
+    height: 19px;
+    float: left;
+    margin: 0.6em 0.9em 0 0;
+    background: url(../img/magn.svg) no-repeat 0 0/cover;
+	}
+}

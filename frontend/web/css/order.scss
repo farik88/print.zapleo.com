@@ -1,0 +1,234 @@
+@import '_vars', '_tools', '_fonts', '_global', '_whiteblock';
+
+.content {
+height: 90vh;
+padding: 0 2.4em 2.4em !important;
+	.container {
+	display: flex;
+	min-height: 100%;
+	@extend %width100;
+	@extend %flex-wrap;
+		&>div {
+		padding: 1.6em 2.7% 0;
+			@media (max-width:360px) {padding-left: 1.2%; padding-right: 1.2%;}
+		}
+	}
+	@media (orientation:portrait) {height: auto;}
+}
+
+//Left block
+.data {
+flex: 1 1 48%;
+	header {
+	text-align: center;
+	color: $zapleo_orange;
+	margin-bottom: 1.4em;
+	}
+	/* Inputs */
+	input {
+	display: block;
+	padding: 1.2em 0.6em 0.3em;
+	font-size: 1.1em;
+	@extend %width100;
+	@extend %border-bottom;
+	}
+	/* Buttons */
+	button, a {
+	font-family: inherit;
+	display: block;
+		&:hover {
+		display: block;
+		}
+	text-align: center;
+    font-size: 1em;
+    height: 2.8em;
+    line-height: 2.8em;
+    min-width: 200px;
+    max-width: 248px;
+    width: 32%;
+    margin: 1.3em auto;
+	@extend %big_button_vs_hover;
+	}
+	p {margin-bottom: 1%;}
+	@media (orientation:portrait) and (max-width:660px) {order: 1;}
+}
+
+/* New */
+.new {
+	li {
+	text-align: left;
+	color: $grey;
+	line-height: 1.7em;
+	// Marker for items
+		&::before {
+		content: "";
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		background: url(../img/marker.svg) no-repeat 0 0/contain;
+		margin: 0 0.6em -0.1em 0.3em;
+		}
+	}
+}
+
+.reg {
+//border: 1px solid $grey + #1a1a1a;
+//color: $grey + #1a1a1a;
+//@include rounded_button($bg_color: $white, $boxshadow: false, $display: block);
+}
+
+.login {
+//color: $white;
+//font-weight: bold;
+//@include rounded_button($bg_color: $zapleo_orange, $boxshadow: false, $display: block);
+}
+
+//Bottom nav
+.buttons {
+@extend %bottom_buttons;
+}
+
+/* Buttons 
+.buttons {
+margin: 1.1em 0;
+text-align: left;
+	button, a {
+	font-size: 0.8em;
+	width: 47.4%;
+	height: 3.6em;
+	line-height: 3.6em;
+	}
+}
+
+.next {
+	float: right;
+	font-family: inherit;
+	font-weight: bold;
+	color: $white;
+	@include rounded_button($bg_color: $zapleo_orange, $boxshadow: false);
+}
+*/
+
+.back {
+position: relative;
+text-align: center;
+font-size: 0.9em;
+padding: 0.9em;
+width: 14em;
+min-width: 180px;
+@extend %big_button_vs_hover;
+@include rounded_button($bg_color: $white, $boxshadow: false);
+}
+
+.back_arr {@extend %back_arr;}
+
+/* Registration */
+.registration {
+	h2 {text-align: center;}
+}
+
+//Right block
+.result {
+flex: 1 1 40%;
+//background: $active_bg + #101010 - #020203;
+background: $mask_background;
+color: $grey + #151515;
+	ul {
+	font-size: 14px;
+	border-bottom: 2px solid $svg-grid;
+	min-width: 180px;
+	}
+	li {
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding-bottom: 1.1em;
+	@extend %flex-wrap;
+	@extend %width100;
+	}
+	.price {
+	margin: 0;
+	@extend %float-right;
+    white-space: nowrap;
+		@media (max-width:660px) {width: 100%;}
+	}
+}
+
+/* Case result image */
+.custom_design {
+width: 76px;
+height: 150px;
+flex-shrink: 0;
+margin: 0 8% 1.1em 1.8%;
+@extend %custom_design;
+	//Indicator
+	.sum {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	font-size: 15px;
+	font-weight: 700;
+	text-anchor: middle;
+	}
+	@media (max-width:660px) {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	//3d case
+	&.case3d {height: 124px;}
+}
+
+.details {
+flex-grow: 1;
+width: 40%;
+	h2 {
+	text-transform: capitalize;
+	font-weight: 600;
+	}
+	p {
+	margin: 5px 0;
+	}
+	@media (max-width:660px) {width: 100%;}
+}
+
+/* .discount {
+	label {
+	display: block;
+	margin: 1em 0;
+	}
+	input {
+	width: 107px;
+	padding: 1px;
+    text-align: center;
+	background: $active_bg;
+	transition: background .25s ease-in-out;
+	@extend %float-right;
+		&:focus {
+		background: $white;
+		}
+	}
+}
+
+.rate {
+display: inline-block;
+}
+
+.currency {
+@extend %float-right;
+} */
+
+.total {
+padding: 0.4em 0;
+font-size: 1.1em;
+text-align: left;
+	p {
+	display: inline-block;
+	margin: 0;
+	}
+	input {
+	margin: 0;
+	}
+	/* span {
+	@extend %float-right;
+	} */
+}

@@ -1,0 +1,180 @@
+@import '_vars', '_tools', '_fonts', '_global', '_whiteblock';
+
+strong {
+	font-size: 1.1em;
+}
+
+.content {
+	@media (min-width:661px) {padding-bottom: 5em;}
+	@media (max-width: 660px) {width: 90%; margin-bottom: 2.2em;}
+}
+
+.wrapper {
+	&>* + * {
+	margin-top: 1.1em;
+	}
+}
+
+.products {
+//max-height: 60vh;
+//overflow: auto;
+@extend %width100;
+	table {
+	border-collapse: collapse;
+		tbody {
+		background: $mask_background;
+		}
+	}
+	>table {
+	width: inherit;
+		@media (max-width: 660px) {width: 100%;}
+	}
+	td {
+	position: relative;
+	padding-left: 2.7%;
+		@media (max-width: 660px) {padding-left: 0;}
+	}
+	@media (max-width: 660px) {width: 90% !important;}
+}
+
+/* Headings */
+.title {
+font-size: 1.1em;
+text-transform: capitalize;
+text-align: left;
+border-bottom: 1px solid $sidebar_bg + #060607;
+padding: 0.25em 0;
+	th {
+	//padding: 0.25em 2.7% 0.25em;
+	padding: 0.25em 0 0.25em 2.7%;
+	font-weight: 400;
+	}
+}
+
+//Big cell
+.big {
+width: 48.6%;
+	@media (max-width:1440px) {width: 36%;}
+	@media (max-width:660px) {width: 10%;}
+}
+
+.small {
+	@media (max-width:1480px) {width: 15%;}
+	@media (max-width:768px) {width: 5%;}
+}
+
+/* Case result image */
+.custom_design {
+width: 114px;
+height: 226px;
+margin: 1.1em 0;
+@extend %custom_design;
+	//3d case
+	&.case3d {height: 186px;}
+}
+
+/* Product details */
+.details {
+color: $grey;
+float: right;
+width: 58%;
+	h2 {
+	text-transform: capitalize;
+	font-weight: bold;
+	margin-top: 1em;
+	}
+	p {
+	margin: 0.3em 0 0.7em;
+	}
+	@media (max-width: 660px) {
+		float: none;
+		width: initial;
+	}
+}
+
+/* Amount of cases */
+.amt {
+border: 1px solid $grey + #1a1a1a;
+color: $gridline;
+	td {
+		&:nth-child(odd) {padding: 0.35em 0.75em;}
+		&:nth-child(even) {
+			width: 44px;
+			text-align: center;
+			border-left: 1px solid $grey + #1a1a1a;
+			border-right: 1px solid $grey + #1a1a1a;
+		}
+	}
+	button {
+	background:none;
+	float: left;
+	font-size: 19px;
+	}
+	@media (max-width:660px) {margin: 0 auto; font-size: 1.5em;}
+}
+
+/* Buttons */
+%nav_button {
+	//font-family: "Geometria", sans-serif;
+	font-family: inherit;
+	font-size: 0.9em;
+	padding: 0.9em;
+	//height: 2.8em;
+	width: 14em;
+	min-width: 180px;
+	//max-width: 248px;
+	//width: 32%;
+}
+
+.buttons {
+//margin-bottom: 1.1em;
+@extend %bottom_buttons;
+//@extend %width100;
+//padding: 1.1em 2.4em;
+	button {
+	@extend %big_button_vs_hover;
+	@extend %nav_button;
+	}
+	/* MyCaseMYC-112 Позиционирование кнопок
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 0 2.4em;
+	*/
+}
+
+.back {
+	position: relative;
+	//border: 1px solid $grey + #1a1a1a;
+	//color: $grey + #1a1a1a;
+	//@extend %nav_button;
+	//@include rounded_button($bg_color: $white, $boxshadow: false);
+}
+
+.back_arr {
+	@extend %back_arr;
+}
+
+.next {
+float: right;
+//font-weight: bold;
+//color: $white;
+//@extend %nav_button;
+//@include rounded_button($bg_color: $zapleo_orange, $boxshadow: false);
+	@media (max-width:660px) {float: none; margin-bottom: 1em;}
+}
+
+/* Remove button */
+.remove {
+$button_side: calcFluidSize(30, 54, 320, 1920);
+width: $button_side;
+height: $button_side;
+position: absolute;
+right: 1.3%;
+transform: translateY(-25%);
+@include rounded_button($bg_color: $zapleo_orange, $boxshadow: false);
+	@media (max-width:1024px) {
+		top: 1.3%;
+		transform: initial;
+	}
+}

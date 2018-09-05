@@ -1,0 +1,208 @@
+@import '_vars', '_tools', '_fonts', '_global', '_whiteblock';
+
+.content {
+	@media (min-width:661px) {padding-bottom: 5em;}
+}
+
+.wrapper > div {
+padding-bottom: 1.75em;
+}
+
+%pair {
+	p {
+	color: $grey;
+	margin: 0;
+	padding: 0.8em 0 0.3em;
+	@extend %border-bottom;
+	}
+	label {
+	flex: 1 1 auto;
+	display: block;
+	position: relative;
+	padding: 0 20px 0 6px;
+	}
+	input, output {
+	font-size: 1em;
+	color: inherit;
+	@extend %width100;
+	transition: .3s ease-in-out;
+		&:focus {
+		text-align: center;
+		color: $black;
+		box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.32);
+		}
+	}
+	[disabled] {
+	background: none;
+	color: inherit;
+	//box-shadow: unset;
+	}
+	.edit {
+	position: absolute;
+	right: 0;
+	bottom: 0.27em;
+	}
+}
+
+.info {
+@extend %pair;
+	p {
+	display: flex;
+	}
+	span {
+	white-space: nowrap;
+	//Any element after span
+		/* &+* {
+		float: right;
+			@media (max-width:660px) {float: none;}
+		} */
+	}
+	input, output {
+	text-align: right;
+	}
+}
+
+.address {
+@extend %pair;
+}
+
+/* Orders */
+
+.orders {
+margin-top: 1.4em;
+padding-top: 1.6em;
+padding-left: 2.7%;
+padding-right: 2.7%;
+background: $mask_background;
+@extend %width100;
+	ul {
+	white-space: nowrap;
+	height: 100%;
+	@extend %width100;
+    overflow-x: auto;
+	}
+	li {
+	display: inline-block;
+	}
+}
+
+.container {
+display: inline-flex;
+	>div {
+	margin-right: 1em;
+	}
+}
+
+.details {
+text-align: initial;
+color: $grey;
+//float: right;
+font-family: "GothamPro", sans-serif;
+	h3 {
+	font-size: 0.9em;
+	text-transform: uppercase;
+	font-weight: 200;
+	margin: 1.1em 0 0.6em;
+    padding-bottom: 0.2em;
+	border-bottom: 1px solid $grey;
+	}
+	p {
+	line-height: 0.8;
+	}
+}
+
+.to_pay {
+	font-size: 0.9em;
+	padding: 0.5em 0;
+    width: 75%;
+	@extend %big_button_vs_hover;
+	//color: $grey + #1a1a1a;
+	//border: 1px solid $grey + #1a1a1a;
+	//@include rounded_button ($bg_color: $white, $boxshadow: true);
+}
+
+//Exit button
+.exit {
+background: none;
+font-size: 0.9em;
+font-family: inherit;
+color: inherit;
+float: right;
+margin: 2.2em 1em 0 0;
+}
+
+//Bottom nav
+.buttons {
+@extend %bottom_buttons;
+}
+
+.back {
+	font-family: inherit;
+	text-align: center;
+	position: relative;
+	font-size: 0.9em;
+	padding: 0.9em;
+	//height: 2.8em;
+	//line-height: 2.8em;
+	min-width: 180px;
+	width: 14em;
+    //max-width: 248px;
+	//margin: 1em;
+	//border: 1px solid $grey + #1a1a1a;
+	//color: $grey + #1a1a1a;
+	//@include rounded_button($bg_color: $white, $boxshadow: false);
+    //margin: 1.1em 0 1.1em 2.4em;
+	@extend %big_button_vs_hover;
+}
+
+.back_arr {
+	@extend %back_arr;
+}
+
+//Edit and save buttons
+.edit {
+width: 15px; height: 15px;
+background: url(../img/edit.svg) transparent;
+}
+
+.save {
+display: none;
+@extend .edit;
+background: url(../img/save.svg) transparent;
+}
+
+/* Case result image */
+.custom_design {
+width: 114px;
+height: 226px;
+margin: 1.1em 0;
+@extend %custom_design;
+	//3d case
+	&.case3d {
+		width: 138px;
+		height: 226px;
+	}
+}
+
+/* LiqPay window */
+.pay {
+@extend %fullscreen_background_element;
+	[name="btn_text"] {
+		border: 1px solid transparent;
+		color: $white;
+		text-align: center;
+		font-size: 0.8em;
+		line-height: 3.6em;
+		height: 3.6em;
+		width: 150px;
+		margin: 1em auto;
+		@extend %pointer;
+		@include rounded_button($bg_color: #7ab72b, $boxshadow: false);
+		&:hover {
+			color: #7ab72b;
+			font-weight: bold;
+			border-color: #7ab72b; 
+			background-color: $white;
+		}
+	}
+}

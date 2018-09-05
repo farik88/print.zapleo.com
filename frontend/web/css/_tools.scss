@@ -1,0 +1,172 @@
+@function calcFluidSize($f-min, $f-max, $v-min, $v-max, $units: px) {
+  $k: ($f-max - $f-min)/($v-max - $v-min);
+  $b: $f-min - $k * $v-min;
+  $b: $b + $units;
+  @return calc( #{$k} * 100vw + #{$b} );
+}
+
+@mixin rounded_button ($bg_color: $white, $hover_color: $zapleo_orange, $boxshadow: true, $display: inline-block) {
+	display: $display;
+	background-color: $bg_color;
+	border-radius: 1.8em; //3em
+	text-transform: uppercase;
+        transition: background-color .15s ease-out;
+	@if $boxshadow == true {
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	}
+        &:hover, &:active{
+            background-color: $hover_color;
+        }
+}
+
+@mixin radial_gradient ($center_color:#fefefe, $in-between_color: #ecebeb, $framing_color: #d9d5d4) {
+background: $center_color;
+background: -moz-radial-gradient(center, ellipse cover, $center_color 0%, $in-between_color 50%, $framing_color 100%);
+background: -webkit-radial-gradient(center, ellipse cover, $center_color 0%, $in-between_color 50%, $framing_color 100%);
+background: radial-gradient(ellipse at center, $center_color 0%, $in-between_color 50%, $framing_color 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$center_color}', endColorstr='#{$framing_color}',GradientType=1 );
+}
+
+%big_button_vs_hover {
+border: 1px solid $grey + #1a1a1a;
+color: $grey + #1a1a1a;
+@include rounded_button($bg_color: $white, $boxshadow: false);
+border-radius: 1em;
+	//On hover
+	&:hover {
+	font-weight: bold;
+	color: $white;
+	border-color: $zapleo_orange;
+	@include rounded_button($bg_color: $zapleo_orange, $boxshadow: false);
+	border-radius: 1em;
+		.back_arr path{
+		fill: #fff;
+		}
+	}
+}
+
+%bottom_buttons {
+padding: 1.1em 2.4em;
+@extend %width100;
+	@media (max-width:410px) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	@media (min-width:661px) {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+}
+
+%pointer {
+cursor: pointer;
+}
+
+%disp_none {
+display: none;
+}
+
+%flex-wrap {
+flex-wrap: wrap;
+}
+
+%width100 {
+width: 100%;
+}
+
+%tile {
+background-color: $tile;
+	&:hover {
+	background-color: transparent;
+	}
+}
+
+%back_arr {
+height: 0.8em;
+position: absolute;
+left: 5.7%;
+top: 35%;
+}
+
+/* Case result image */
+%custom_design {
+display: inline-block;
+position: relative;
+background: $white;
+	img {
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+	height: 100%;
+	@extend %width100;
+	}
+	//Shadow
+	/* &::after {
+		content: '';
+		position: absolute;
+		bottom: -10px;
+		left: -20%;
+		width: 140%;
+		height: 15px;
+		background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+	} */
+}
+
+//%radial_gradient {
+//background: #fefefe;
+//background: -moz-radial-gradient(center, ellipse cover,  #fefefe 0%, #ecebeb 50%, #d9d5d4 100%);
+//background: -webkit-radial-gradient(center, ellipse cover,  #fefefe 0%,#ecebeb 50%,#d9d5d4 100%);
+//background: radial-gradient(ellipse at center,  #fefefe 0%,#ecebeb 50%,#d9d5d4 100%);
+//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#d9d5d4',GradientType=1 );
+//}
+
+%fixed_fullscreen {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+}
+
+//Popup element
+%fullscreen_background_element {
+@extend %disp_none;
+font-family: "Geometria", sans-serif;
+z-index: 2;
+overflow: auto;
+@extend %fixed_fullscreen;
+@include radial_gradient ($center_color: rgba(0, 0, 0, 0.6), $in-between_color: rgba(0, 0, 0, 0.7), $framing_color: rgba(0, 0, 0, 0.8));
+	.wrapper {
+	height: 100%;
+    display: flex;
+	}
+	//Message container
+	.notice {
+	position: relative;
+	background: $mask_background;
+	width: 75%;
+	min-width: 320px;
+	max-width: 552px;
+	margin: auto;
+	padding: 1.1em 0 0;
+	text-align: center;
+	color: $gridline;
+	}
+	//Close button
+	.close {
+	position: absolute;
+	top: 0;
+	right: calc(-0.6em + -38px);
+	width: 38px;
+	height: 38px;
+	background: url(../img/close.svg) transparent;
+	transition: all .5s ease-in-out;
+		@media (max-width:410px) {
+			top: calc(-0.6em + -38px);
+			right: 0;
+		}
+	}
+}

@@ -1,0 +1,272 @@
+// Highlighting next steps
+.help {
+outline: 2px dashed transparent;
+animation-name: help;
+animation-duration: 1s;
+animation-timing-function: linear;
+animation-iteration-count: 1;
+}
+
+@keyframes help {
+0%, 100% {outline-color: transparent;}
+50% {outline-color: #00baff;}
+}
+
+.mob_constr {
+//Button width
+$base_width: 30px;
+
+@extend %disp_none;
+width: $base_width;
+height: $base_width*2;
+clip: rect(0px, $base_width, $base_width*2, 0px);
+position: absolute;
+top: calc(50% - #{$base_width});
+left: -#{$base_width};
+z-index: 2;
+border: 1px solid $grey + #1a1a1a;
+border-right-width: 0;
+border-radius: 3em 0 0 3em;
+background: url(../img/mob_constructor.svg) no-repeat center/65% $sidebar_bg + #060607;
+//transition: right .5s ease-in-out;
+}
+
+button, .search input {
+font-family: inherit;
+font-weight: inherit;
+font-size: inherit;
+color: inherit;
+}
+
+label {
+@extend %pointer;
+}
+
+[type^="radio"] {
+@extend %disp_none;
+}
+
+html {
+@extend %fixed_fullscreen;
+}
+
+body {
+display: flex;
+height: 100vh;
+}
+
+.sidebar {
+margin-left: auto;
+font-family: "Geometria", sans-serif;
+font-weight: 300;
+border-left: 1px solid $grey + #1a1a1a;
+background: $sidebar_bg;
+width: 30%;
+min-width: 320px;
+max-width: 548px;
+height: 100%;
+display: flex;
+flex-direction: column;
+position: relative;
+//Animation for mobile
+transform: initial;
+transform-origin: right;
+transition: transform .5s ease-in-out;
+	header {
+	padding: 1.05em 2.92em 0;
+	display: table; //iOS fix
+	@extend %width100; //iOS fix
+	}
+	footer {
+	text-align: center;
+	padding: 0.7em 0 1.2em;
+	}
+	/* Active variant */
+	.active {
+	background: $active_bg;
+	color: $black;
+	}
+	//Mobile z-index button
+	&~ {
+		.zindex, .mob_constr {
+		@extend %disp_none;
+		}
+	}
+	//Shown on mobile device
+	&.expanded {
+	transform: initial;
+	}
+}
+
+.expanded {
+	.mob_constr {
+	background-image: url(../img/mob_constructor_180.svg);
+	//right: 319px;
+	//@media (max-width:360px) {right: 289px;}
+	}
+}
+
+.progressbar {
+position: relative;
+	ol {
+	display: flex;
+	justify-content: space-between;
+		li {
+		text-align: center;
+		width: 41px;
+		z-index: 1;
+		@extend %pointer;
+		}
+	}
+}
+
+/* ❶ - ❷ - ❸ and ⊕ - ⊖ */
+.corner, .num {fill: $zapleo_orange;}
+.bgfill {fill: $white;}
+
+/* Completed stages */
+.completed {
+	.corner, .num {fill: $white;}
+	.bgfill {fill: $zapleo_orange;}
+}
+
+[class^="stage"] {
+	//Centering of signatures 
+	+p {
+		margin-top: 0.6em;
+		margin-left: -50%;
+	    width: 200%;
+	}
+}
+
+/* Progress line */
+.line {
+position: absolute;
+top: 19px;
+height: 7px;
+margin: 0;
+background: $white;
+@extend %width100;
+	span {
+	position: inherit;
+    top: 1px;
+	display: inline-block;
+    height: 5px;
+    background: $zapleo_orange;
+    border-radius: 2px;
+	transition: width .5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+	}
+}
+
+/* Sidebar footer */
+%footer_button {
+	font-size: 1em;
+	width: 45.3%;
+	height: 2.8em;
+	line-height: 2.8em;
+	@extend %big_button_vs_hover;
+}
+
+.back {
+	margin-right: 1em;
+	@extend %footer_button;
+}
+
+.next {
+	@extend %footer_button;
+}
+
+.done {
+@extend %disp_none;
+width: 94%;
+@extend %footer_button;
+}
+
+/* ------------ Case template ------------ */
+.container {
+transform: matrix(0.363, 0, 0, 0.363, -50, 0);
+transform-origin: center;
+margin: auto;
+@extend %fixed_fullscreen;
+	img {
+	position: absolute;
+	pointer-events: none;
+	@extend %width100;
+	}
+	/* &::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		bottom: -30px;
+		left: -10%;
+		width: 120%;
+		height: 70px;
+		background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+	} */
+	@media (max-width:960px) {transform: matrix(0.2, 0, 0, 0.2, -150, 0);}
+	@media (max-height:700px) and (orientation:landscape) {transform: matrix(0.263, 0, 0, 0.263, -50, 0);}
+	@media (max-height:480px) {transform: matrix(0.15, 0, 0, 0.15, -150, 0);}
+	// --------- 3D case ---------
+	&.case3d {
+	transform: matrix(0.33, 0, 0, 0.33, -110, 0);
+		@media (max-width:1280px) {transform: matrix(0.2, 0, 0, 0.2, -130, 0);}
+		@media (max-width:960px) {transform: matrix(0.2, 0, 0, 0.2, -310, 0);}
+		@media (max-height:700px) and (orientation:landscape) {transform: matrix(0.16, 0, 0, 0.16, -230, 0);}
+		@media (max-height:480px) {transform: matrix(0.12, 0, 0, 0.12, -310, 0);}
+	}
+}
+
+.canvas-container {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+	canvas {
+	@extend .canvas-container;
+	@extend %width100;
+	}
+}
+
+.phone-mask {
+z-index: 2;
+width: inherit;
+height: inherit;
+transform: scale(1.0015);
+@extend %disp_none;
+	&~img {
+	@extend .canvas-container;
+	}
+}
+
+.helper-mask {
+z-index: 1;
+}
+
+// -------- Preloader --------
+.preloader {
+@extend %disp_none;
+z-index: 3;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: $tile;
+box-shadow: inset 0 0 100px 10px $active_bg;
+	.spinner {
+	position: inherit;
+	top: calc(50% - 60px);
+	left: calc(50% - 60px);
+	}
+	//All segments
+	path {
+	fill: $grey;
+	fill-opacity: 0.25;
+	}
+	//Filled segment
+	.filled {
+	fill: $zapleo_orange;
+	fill-opacity: 1;
+	}
+}

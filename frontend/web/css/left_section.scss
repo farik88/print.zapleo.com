@@ -1,0 +1,259 @@
+@import '_vars', '_tools';
+
+section {
+%section_button {
+width: 8vmin;
+max-width: 3.5em;
+height: 8vmin;
+max-height: 3.5em;
+background-repeat: no-repeat;
+background-position: center;
+background-size: 60%;
+@include rounded_button;
+	@media (max-width:960px) {width: 30px; height: 30px;}
+}
+
+font-family: "Geometria", sans-serif;
+//float: left;
+display: inline-block;
+//height: 100vh;
+max-width: 28%;
+padding: 1em 0 2.7em 2.7em;
+	&>* {
+	display: block;
+	}
+	ul button {
+	@extend %section_button;
+	}
+	.profile {
+	//background-size: 50%;
+	@extend %section_button;
+	}
+	// Device model
+	h1 {
+	font-size: 2.5em;
+	margin: 0.12em 0 0;
+	white-space: nowrap;
+		@media (max-width:1280px) { font-size: 1.6em; }
+		@media (max-width:960px) { margin: 0; }
+	}
+	// Case description
+	p {
+	font-size: 1.1em;
+	font-weight: 300;
+	margin: 0;
+	}
+	// Case price
+	h2 {
+	color: $gridline;
+	font-size: 1.9em;
+	margin: 0.2em 0 0;
+		@media (max-width:1280px) {font-size: 1em;}
+	}
+}
+
+/* Button's background-image */
+.profile {
+background-image: url(../img/profile.svg);
+}
+
+.book {
+//background-image: url(../img/book.png);
+//background-size: 85%;
+background-image: url(../img/instruction.svg);
+}
+
+.shuffle {
+background-image: url(../img/shuffle.svg);
+}
+
+.reset {
+background-image: url(../img/reset.svg);
+}
+
+.remove {
+background-image: url(../img/remove.svg);
+}
+
+.controls {
+//margin-top: 5.4em;
+margin-top: 11.6vmin;
+	li {
+		&:first-of-type {@extend %disp_none;}
+		& + li {
+		//margin-top: 0.9em;
+		margin-top: 1.88vmin;
+		}
+		@media (max-width:960px) {height: 30px;}
+	}
+}
+
+//Logo
+.logo {
+//margin: 0 0 1em -1em;
+margin: 0 0 2.19vmin -1vmin;
+width: 22vmin;
+max-width: 212px;
+	img {
+	@extend %width100;
+	}
+}
+
+/* Z-index control button */
+.zindex {
+position: absolute;
+left: calc(-1em - 8vmin);
+top: 0;
+width: 8vmin;
+max-width: 3.5em;
+height: 8vmin;
+max-height: 3.5em;
+background: url(../img/zindex.svg) no-repeat center/60%;
+transform: translateY(600%);
+@include rounded_button;
+	@media (max-width:960px) {
+	width: 30px;
+	height: 30px;
+	left: -40px;
+    top: 1em;
+	transform: unset;
+	}
+}
+
+/* Color select */
+.colorset {
+display: inline-block;
+text-transform: uppercase;
+z-index: 1;
+position: absolute;
+right: 33%;
+top: 1.5em;
+color: $gridline;
+font-weight: 300;
+	ul {
+	display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+	overflow: hidden;
+	height: 30px;
+	min-height: 30px;
+	transition: .5s linear;
+		li {
+		display: inherit;
+		min-height: inherit;
+		position: relative;
+		@extend %pointer;
+			&+li {
+			margin-top: 6px;
+			color: transparent;
+				&:hover {
+				color: $gridline;
+				}
+			}
+		}
+	}
+	label {
+	margin: auto 40px auto 0;
+	white-space: nowrap;
+	}
+	//Color preview
+	span {
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+	border: 3px solid $white;
+	//box-shadow: inset 0 0 0 3px $white;
+	//border-radius: 50%/40%;
+	border-radius: 25%;
+	position: absolute;
+    top: 0;
+    right: 0;
+	}
+	//Triangle button
+	&::after {
+	content: '';
+	background: url(../img/arr_triangle.svg) no-repeat center right;
+	display: inherit;
+	position: inherit;
+	top: 0;
+	right: -23px;
+	height: 30px;
+	width: 23px;
+	@extend %pointer;
+	transition: transform .5s linear;
+		@media (max-width:960px) {transform: scale(1, -1);}
+	}
+	//Upend arrow when list shown
+	&.upend::after {
+	transform: scale(1, -1);
+		@media (max-width:960px) {transform: none;}
+	}
+}
+
+@media (max-width:960px) {
+	//1 block
+	section {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	align-self: flex-start;
+	width: calc(100% - 320px);
+	max-width: initial;
+	padding: 1em 0 1em 1em;
+		//&>* {margin-right: 1em;}
+		&> .profile {display: none;}
+	}
+	.logo {max-width: 80px; margin-right: 1em;}
+	.controls {
+	margin: 1em;
+	position: absolute;
+	left: 0;
+	bottom: calc(50% - 25px);
+    transform: translateY(50%);
+		li:first-of-type {display: initial;}
+	}
+	.colorset {
+	top: auto;
+    bottom: 0.7em;
+	}
+}
+
+@media (max-width:680px) {
+%hidden {
+display: none;
+}
+	body {overflow: hidden;}
+	//1 block
+	section {flex: 1 0 100%;}
+	//2 block
+	.container {
+    transform-origin: calcFluidSize(290, 510, 320, 680) center;
+		&.case3d {
+		transform-origin: calcFluidSize(440, 670, 320, 680) center;
+		}
+	}
+	//3 block
+	.sidebar {
+	transform: translateX(100%);
+	position: fixed;
+	right: 0;
+	z-index: 2;
+	//overflow: auto;
+	opacity: 0.94;
+		//Showing mobile controls 
+		> .zindex {
+		@extend %hidden;
+		}
+		~ .zindex, & .mob_constr {
+		display: initial;
+		}
+	}
+	.zindex {
+	left: auto;
+	right: 1em;
+	}
+}
+
+@media (max-width:360px) {
+.sidebar {min-width: 290px;}
+}
